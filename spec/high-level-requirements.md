@@ -25,6 +25,23 @@ description.
 
 ## Votes ##
 
+REQ-V-1: Any User with proper rights can vote on a Question.
+
+REQ-V-2: A User can change his/her vote on a Question at any time.
+
+REQ-V-3: Voting is made using [Condorcet voting method]
+(https://en.wikipedia.org/wiki/Condorcet_method). Each User ranks the
+Responses of a Question in order of preferences. The winning answer is
+determined according to the Condorcet procedure, taking into all Users'
+votes.
+
+REQ-V-4: In case no Condorcet winner exists, there is no winning
+Response to the Question.
+
+> Note: We do not request to use Swartz or Schultze algorithms to
+> extract a set of winners. We will see if this is an issue in practice.
+
+
 ## Classification ##
 
 ## Delegation ##
