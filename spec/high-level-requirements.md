@@ -101,11 +101,7 @@ to determine who has the Delegate vote of a User.
 REQ-SEC-1: A User must correspond to a unique physical person. A
 physical person must correspond to a unique User.
 
-REQ-SEC-2: Each User should be authenticated to use the demexp system.
-
-> Note: Is above requirement derived from REQ-SEC-1?
-
-REQ-SEC-3: Several kind of rights can be given or removed to a User:
+REQ-SEC-2: Several kind of rights can be given or removed to a User:
 
 * _Default rights_: rights to add new Questions and Responses, right to
   vote as User and Delegate on a Question;
@@ -119,8 +115,8 @@ REQ-SEC-3: Several kind of rights can be given or removed to a User:
 
 > Note: how all these rights are precisely managed is not clear yet.
 
-REQ-SEC-4: There is always a User with Administrator rights in the
+REQ-SEC-3: There is always a User with Administrator rights in the
 system.
 
-REQ-SEC-5: When a new User is created, he/she has Default and
+REQ-SEC-4: When a new User is created, he/she has Default and
 Classification rights.
