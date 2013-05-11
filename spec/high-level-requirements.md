@@ -61,9 +61,10 @@ the number of received delegations (possibly zero if no delegation).
 REQ-V-7: A User can always vote as a User and as a Delegate. The two
 votes can be different.
 
-> Note: The User's vote is personal and hidden. The Delegate vote might
-> be public (but can also be private, it is up to the Delegate to
-> decide).
+REQ-V-8: Vote of a User is always private, hidden to other Users.
+
+REQ-V-9: Vote of a Delegate can be private or public, according to
+Delegate wish.
 
 ## Classification ##
 
@@ -97,7 +98,8 @@ to determine who has the Delegate vote of a User.
 
 ## Security ##
 
-REQ-SEC-1: A demexp User should correspond to a unique physical person.
+REQ-SEC-1: A User must correspond to a unique physical person. A
+physical person must correspond to a unique User.
 
 REQ-SEC-2: Each User should be authenticated to use the demexp system.
 
