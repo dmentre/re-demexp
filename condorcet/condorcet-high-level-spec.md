@@ -26,28 +26,40 @@ format:
 
 **REQ-5**: This module shall output if the input is valid or not.
 
-**REQ-6**: An input shall be considered valid if (1) it follows the
-input format defined in REQ-4 and (2) each integer used in the input is
-in a valid range defined in REQ-D-1 and (3) the number of votes is in
-valid range defined in REQ-D-2.
+**REQ-6**: In case the input is invalid, the module shall give the line
+  number of the invalid line.
 
-**REQ-7**: In case the input is valid, it shall output if there is a
+**REQ-7**: An input shall be considered valid if all following
+conditions are fulfilled:
+
+1. Input follows the input format defined in REQ-4
+
+2. Each integer used in the input is in a valid range defined in REQ-D-1
+
+3. The number of votes is in valid range defined in REQ-D-2
+
+4. For each vote, there is a single entry for at most each candidate
+
+**REQ-8**: In case the input is valid, it shall output if there is a
 Condorcet winner or not. If there is a Condorcet winner, it shall output
 the number of this winner.
 
-**REQ-8**: The format of the output shall be in textual form in
+**REQ-9**: The format of the output shall be in textual form in
 following format:
 
 > Line 1: "valid-input: yes" or "valid-input: no" string if the input
   is respectively valid or not
 
-> Line 2: "condorcet-winner: yes" or "condorcet-winner: no" string if
+> Line 2: integer corresponding to the invalid line number if the input
+  is invalid, 0 otherwise
+
+> Line 3: "condorcet-winner: yes" or "condorcet-winner: no" string if
   there is respectively a Condorcet winner or not
 
-> Line 3: integer corresponding to the winning candidate in case there
-  is a Condorcet winner. Integer 0 in case there is no Condorcet winner
+> Line 4: integer corresponding to the winning candidate in case there
+  is a Condorcet winner, 0 otherwise
 
-**REQ-9**: The end-of-line marker in input and output shall be specific
+**REQ-10**: The end-of-line marker in input and output shall be specific
   to the operating system on which the module is running
 
 ## Dimensions ##
