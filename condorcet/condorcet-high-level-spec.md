@@ -74,11 +74,12 @@ No requirement on safety.
 
 ## Security ##
 
-No requirement on security.
+**REQ-SEC-1**: In case of Run Time Error, the program should handle the
+  error case and end with an exceptional condition.
 
 Note: We could request that no trace is left in memory. Not sure it is
 worth it for now.
 
 ## Performance ##
 
-No requirement on performance.
+**REQ-PERF-1**: The module shall compute the output in less than 10s.
