@@ -17,18 +17,18 @@ matrix module*.
 
 ## Input module ##
 
-Input: The vote expressed in text form on standard output.
+Input: The vote expressed in text form on standard input.
 
 Outputs:
 
-1. A boolean telling if the input file is valid or not;
+1. A boolean telling if the input is valid or not;
 2. A Condorcet Matrix corresponding to all the votes in the input.
 
-## Condorcet matrix module ##
+## Vote module ##
 
 Inputs:
 
-1. A boolean telling if the input file is valid or not;
+1. A boolean telling if the input is valid or not;
 2. A Condorcet Matrix corresponding to all the votes in the input.
 
 Output: The result of the vote expressed in text form on the standard
