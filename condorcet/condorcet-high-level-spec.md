@@ -3,7 +3,7 @@
 ## General requirements ##
 
 **REQ-1**: This module shall implement the Condorcet voting algorithm as
-defined in https://en.wikipedia.org/wiki/Condorcet_method
+defined in https://en.wikipedia.org/wiki/Condorcet_method#Basic_procedure
 
 **REQ-2**: It shall take its input on standard input.
 
