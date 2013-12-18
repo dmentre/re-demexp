@@ -1,2 +1,5 @@
 # Temporary files
 *~
+
+# Binary directory
+condorcet/obj/
