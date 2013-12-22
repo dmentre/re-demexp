@@ -8,3 +8,7 @@ condorcet/obj/*.o
 
 # Test harness
 condorcet/obj/gnattest/harness/
+
+# Metrics files
+condorcet/metrix.xml
+condorcet/obj/*.metrix
