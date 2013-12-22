@@ -9,6 +9,9 @@ package Condorcet_Matrix is
 
    function Get_Size(M : Condorcet_Matrix) return Candidate_Range;
 
+   function Get_Vote(M : Condorcet_Matrix; I,J : Candidate_Range)
+                     return Vote_Range;
+
    function Is_Valid_Vote(Vote : Vote_T; Size : Candidate_Range) return Boolean is
      (-- 'Vote' range is valid
       Vote'First = Candidate_Range'First and Vote'Last = Size
@@ -30,12 +33,27 @@ package Condorcet_Matrix is
 
    function Is_Zero(M : Condorcet_Matrix) return Boolean;
 
+   function Is_Zero_Or_One(M : Condorcet_Matrix) return Boolean;
+
+   function Is_Not_Saturated(M : Condorcet_Matrix) return Boolean;
+
    procedure Reset(M : in out Condorcet_Matrix; Size : Candidate_Range) with
      Post => Is_Zero(M) and Get_Size(M) = Size;
 
    procedure Matrix_Of_Vote(M : in out Condorcet_Matrix; Vote : Vote_T) with
      Pre => Is_Zero(M) and Is_Valid_Vote(Vote, Get_Size(M)),
      Post => Is_Valid_Matrix_Of_Vote(M, Vote);
+
+   procedure Sum(To_M : in out Condorcet_Matrix; M2 : in Condorcet_Matrix) with
+     Pre =>
+       (Get_Size(To_M) = Get_Size(M2)
+        and
+          Is_Not_Saturated(To_M) and Is_Zero_Or_One(M2)),
+     Post =>
+       (for all I in Candidate_Range'Range =>
+            (for all J in Candidate_Range'Range =>
+                 (Get_Vote(To_M, I, J)
+                  = Get_Vote(To_M'Old, I, J) + Get_Vote(M2, I, J))));
 
 private
    type Matrix_Content is
