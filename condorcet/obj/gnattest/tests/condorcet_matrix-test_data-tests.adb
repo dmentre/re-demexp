@@ -141,32 +141,32 @@ package body Condorcet_Matrix.Test_Data.Tests is
 
 
 --  begin read only
-   procedure Test_Vote (Gnattest_T : in out Test);
-   procedure Test_Vote_34398e (Gnattest_T : in out Test) renames Test_Vote;
---  id:2.1/34398e546330d6d1/Vote/1/0/
-   procedure Test_Vote (Gnattest_T : in out Test) is
-   --  condorcet_matrix.ads:36:4:Vote
+   procedure Test_Matrix_Of_Vote (Gnattest_T : in out Test);
+   procedure Test_Matrix_Of_Vote_71388c (Gnattest_T : in out Test) renames Test_Matrix_Of_Vote;
+--  id:2.1/71388cee83d5ba48/Matrix_Of_Vote/1/0/
+   procedure Test_Matrix_Of_Vote (Gnattest_T : in out Test) is
+   --  condorcet_matrix.ads:36:4:Matrix_Of_Vote
 --  end read only
 
       pragma Unreferenced (Gnattest_T);
 
+      M2 : Condorcet_Matrix;
    begin
---        Reset(M, Size);
---        Vote := (1, 2, 3);
---        Condorcet_Matrix.Vote(M, Vote);
---
---        AUnit.Assertions.Assert
---          (M.Vote = ((0, 1, 1, others => 0),
---           (0, 0, 1, others => 0),
---           (0, 0, 0, others => 0),
---           others => (others => 0)),
---           "Vote checked.");
-       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+      Reset(M, Size);
+      Reset(M2, Size);
+      Vote := (1, 2, 3);
+      Matrix_Of_Vote(M, Vote);
+
+      M2.Vote := ((0, 1, 1, others => 0),
+                  (0, 0, 1, others => 0),
+                  (0, 0, 0, others => 0),
+                  others => (others => 0));
+      AUnit.Assertions.Assert
+        (M.Vote = M2.Vote,
+         "Vote checked.");
 
 --  begin read only
-   end Test_Vote;
+   end Test_Matrix_Of_Vote;
 --  end read only
 
 end Condorcet_Matrix.Test_Data.Tests;

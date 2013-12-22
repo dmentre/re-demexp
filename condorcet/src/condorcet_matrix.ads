@@ -33,7 +33,7 @@ package Condorcet_Matrix is
    procedure Reset(M : in out Condorcet_Matrix; Size : Candidate_Range) with
      Post => Is_Zero(M) and Get_Size(M) = Size;
 
-   procedure Vote(M : in out Condorcet_Matrix; Vote : Vote_T) with
+   procedure Matrix_Of_Vote(M : in out Condorcet_Matrix; Vote : Vote_T) with
      Pre => Is_Zero(M) and Is_Valid_Vote(Vote, Get_Size(M)),
      Post => Is_Valid_Vote_Matrix(M, Vote);
 

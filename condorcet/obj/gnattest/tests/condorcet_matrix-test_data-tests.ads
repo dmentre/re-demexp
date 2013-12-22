@@ -24,8 +24,8 @@ package Condorcet_Matrix.Test_Data.Tests is
    procedure Test_Reset_b2e6b9 (Gnattest_T : in out Test);
    --  condorcet_matrix.ads:33:4:Reset
 
-   procedure Test_Vote_34398e (Gnattest_T : in out Test);
-   --  condorcet_matrix.ads:36:4:Vote
+   procedure Test_Matrix_Of_Vote_71388c (Gnattest_T : in out Test);
+   --  condorcet_matrix.ads:36:4:Matrix_Of_Vote
 
 end Condorcet_Matrix.Test_Data.Tests;
 --  end read only

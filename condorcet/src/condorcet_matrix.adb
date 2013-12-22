@@ -35,7 +35,7 @@ package body Condorcet_Matrix is
       M.Vote := (others => (others => 0));
    end Reset;
 
-   procedure Vote(M : in out Condorcet_Matrix; Vote : Vote_T) is
+   procedure Matrix_Of_Vote(M : in out Condorcet_Matrix; Vote : Vote_T) is
    begin
       for I in Vote'Range loop
          for J in I+1 .. Vote'Last loop
@@ -43,6 +43,6 @@ package body Condorcet_Matrix is
             M.Vote(Vote(J), Vote(I)) := 0;
          end loop;
       end loop;
-   end Vote;
+   end Matrix_Of_Vote;
 
 end Condorcet_Matrix;
