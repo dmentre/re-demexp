@@ -58,17 +58,16 @@ package body Condorcet_Matrix.Test_Data.Tests is
 
 
 --  begin read only
-   procedure Test_Is_Valid_Vote_Matrix (Gnattest_T : in out Test);
-   procedure Test_Is_Valid_Vote_Matrix_b82a7d (Gnattest_T : in out Test) renames Test_Is_Valid_Vote_Matrix;
---  id:2.1/b82a7d1afd351b34/Is_Valid_Vote_Matrix/1/0/
-   procedure Test_Is_Valid_Vote_Matrix (Gnattest_T : in out Test) is
-   --  condorcet_matrix.ads:27:4:Is_Valid_Vote_Matrix
+   procedure Test_Is_Valid_Matrix_Of_Vote (Gnattest_T : in out Test);
+   procedure Test_Is_Valid_Matrix_Of_Vote_b229e1 (Gnattest_T : in out Test) renames Test_Is_Valid_Matrix_Of_Vote;
+--  id:2.1/b229e133bdb9d959/Is_Valid_Matrix_Of_Vote/1/0/
+   procedure Test_Is_Valid_Matrix_Of_Vote (Gnattest_T : in out Test) is
+   --  condorcet_matrix.ads:27:4:Is_Valid_Matrix_Of_Vote
 --  end read only
 
       pragma Unreferenced (Gnattest_T);
 
    begin
-
       Reset(M, Size);
       Vote := (1, 2, 3);
       M.Vote := ((0, 1, 1, others => 0),
@@ -76,7 +75,7 @@ package body Condorcet_Matrix.Test_Data.Tests is
                  (0, 0, 0, others => 0),
                  others => (others => 0));
       AUnit.Assertions.Assert
-        (Is_Valid_Vote_Matrix(M, Vote),
+        (Is_Valid_Matrix_Of_Vote(M, Vote),
          "Valid matrix recognized.");
 
       M.Vote := ((0, 1, 0, others => 0),
@@ -84,11 +83,11 @@ package body Condorcet_Matrix.Test_Data.Tests is
                  (0, 0, 0, others => 0),
                  others => (others => 0));
       AUnit.Assertions.Assert
-        (not Is_Valid_Vote_Matrix(M, Vote),
+        (not Is_Valid_Matrix_Of_Vote(M, Vote),
          "Invalid matrix recognized.");
 
 --  begin read only
-   end Test_Is_Valid_Vote_Matrix;
+   end Test_Is_Valid_Matrix_Of_Vote;
 --  end read only
 
 
@@ -168,5 +167,6 @@ package body Condorcet_Matrix.Test_Data.Tests is
 --  begin read only
    end Test_Matrix_Of_Vote;
 --  end read only
+
 
 end Condorcet_Matrix.Test_Data.Tests;

@@ -15,8 +15,8 @@ package Condorcet_Matrix.Test_Data.Tests is
    procedure Test_Is_Valid_Vote_074871 (Gnattest_T : in out Test);
    --  condorcet_matrix.ads:12:4:Is_Valid_Vote
 
-   procedure Test_Is_Valid_Vote_Matrix_b82a7d (Gnattest_T : in out Test);
-   --  condorcet_matrix.ads:27:4:Is_Valid_Vote_Matrix
+   procedure Test_Is_Valid_Matrix_Of_Vote_b229e1 (Gnattest_T : in out Test);
+   --  condorcet_matrix.ads:27:4:Is_Valid_Matrix_Of_Vote
 
    procedure Test_Is_Zero_78dcb3 (Gnattest_T : in out Test);
    --  condorcet_matrix.ads:31:4:Is_Zero

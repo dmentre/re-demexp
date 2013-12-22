@@ -2,7 +2,7 @@ package body Condorcet_Matrix is
    function Get_Size(M : Condorcet_Matrix) return Candidate_Range is
      (M.Size);
 
-   function Is_Valid_Vote_Matrix(M : Condorcet_Matrix; Vote : Vote_T)
+   function Is_Valid_Matrix_Of_Vote(M : Condorcet_Matrix; Vote : Vote_T)
                                  return Boolean is
      (-- all votes of 'Vote' a properly stored
         (for all I in Vote'Range =>

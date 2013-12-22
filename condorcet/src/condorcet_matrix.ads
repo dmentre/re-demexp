@@ -24,7 +24,7 @@ package Condorcet_Matrix is
            (Vote(I) in Vote'Range))
      );
 
-   function Is_Valid_Vote_Matrix(M : Condorcet_Matrix; Vote : Vote_T)
+   function Is_Valid_Matrix_Of_Vote(M : Condorcet_Matrix; Vote : Vote_T)
                                  return Boolean with
      Pre => Is_Valid_Vote(Vote, Get_Size(M));
 
@@ -35,7 +35,7 @@ package Condorcet_Matrix is
 
    procedure Matrix_Of_Vote(M : in out Condorcet_Matrix; Vote : Vote_T) with
      Pre => Is_Zero(M) and Is_Valid_Vote(Vote, Get_Size(M)),
-     Post => Is_Valid_Vote_Matrix(M, Vote);
+     Post => Is_Valid_Matrix_Of_Vote(M, Vote);
 
 private
    type Matrix_Content is
