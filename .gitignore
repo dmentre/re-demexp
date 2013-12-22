@@ -2,4 +2,9 @@
 *~
 
 # Binary directory
-condorcet/obj/
+condorcet/obj/gnatprove/
+condorcet/obj/*.ali
+condorcet/obj/*.o
+
+# Test harness
+condorcet/obj/gnattest/harness/
