@@ -103,10 +103,13 @@ package body Condorcet_Matrix.Test_Data.Tests is
       pragma Unreferenced (Gnattest_T);
 
    begin
-
+      M.Vote := (others => (others => 0));
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (Is_Zero(M), "Is_Zero recognized.");
+
+      M.Vote(1,1) := 1;
+      AUnit.Assertions.Assert
+        (not Is_Zero(M), "not Is_Zero recognized.");
 
 --  begin read only
    end Test_Is_Zero;
@@ -124,10 +127,13 @@ package body Condorcet_Matrix.Test_Data.Tests is
       pragma Unreferenced (Gnattest_T);
 
    begin
-
+      Reset(M, Size);
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        ((for all I in Candidate_Range'Range =>
+            (for all J in Candidate_Range'Range =>
+               (M.Vote(I,J) = 0)))
+         and M.Size = Size,
+         "Reset checked.");
 
 --  begin read only
    end Test_Reset;
@@ -145,8 +151,17 @@ package body Condorcet_Matrix.Test_Data.Tests is
       pragma Unreferenced (Gnattest_T);
 
    begin
-
-      AUnit.Assertions.Assert
+--        Reset(M, Size);
+--        Vote := (1, 2, 3);
+--        Condorcet_Matrix.Vote(M, Vote);
+--
+--        AUnit.Assertions.Assert
+--          (M.Vote = ((0, 1, 1, others => 0),
+--           (0, 0, 1, others => 0),
+--           (0, 0, 0, others => 0),
+--           others => (others => 0)),
+--           "Vote checked.");
+       AUnit.Assertions.Assert
         (Gnattest_Generated.Default_Assert_Value,
          "Test not implemented.");
 
