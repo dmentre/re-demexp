@@ -12,6 +12,10 @@ package Condorcet_Matrix.Test_Data is
 --  end read only
    with null record;
 
+   Size : constant Candidate_Range := 3;
+   Vote : Vote_T(Candidate_Range'First .. Size);
+   M : Condorcet_Matrix;
+
    procedure Set_Up (Gnattest_T : in out Test);
    procedure Tear_Down (Gnattest_T : in out Test);
 

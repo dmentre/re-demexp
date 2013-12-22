@@ -19,7 +19,6 @@ package body Condorcet_Matrix.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced (Gnattest_T);
-      M : Condorcet_Matrix;
 
    begin
       Reset(M, Size => Candidate_Range'First);
@@ -42,10 +41,7 @@ package body Condorcet_Matrix.Test_Data.Tests is
 
       pragma Unreferenced (Gnattest_T);
 
-      Size : constant Candidate_Range := 3;
-      Vote : Vote_T(Candidate_Range'First .. Size);
    begin
-
       Vote := (1, 2, 3);
       AUnit.Assertions.Assert
         (Is_Valid_Vote(Vote, Size),
@@ -73,9 +69,23 @@ package body Condorcet_Matrix.Test_Data.Tests is
 
    begin
 
+      Reset(M, Size);
+      Vote := (1, 2, 3);
+      M.Vote := ((0, 1, 1, others => 0),
+                 (0, 0, 1, others => 0),
+                 (0, 0, 0, others => 0),
+                 others => (others => 0));
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (Is_Valid_Vote_Matrix(M, Vote),
+         "Valid matrix recognized.");
+
+      M.Vote := ((0, 1, 0, others => 0),
+                 (0, 0, 1, others => 0),
+                 (0, 0, 0, others => 0),
+                 others => (others => 0));
+      AUnit.Assertions.Assert
+        (not Is_Valid_Vote_Matrix(M, Vote),
+         "Invalid matrix recognized.");
 
 --  begin read only
    end Test_Is_Valid_Vote_Matrix;
