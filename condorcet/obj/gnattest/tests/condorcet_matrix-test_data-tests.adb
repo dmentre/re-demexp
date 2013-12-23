@@ -237,27 +237,4 @@ package body Condorcet_Matrix.Test_Data.Tests is
    end Test_Sum;
 --  end read only
 
-
---  begin read only
-   --  procedure Test_Is_Zero (Gnattest_T : in out Test);
-   --  procedure Test_Is_Zero_78dcb3 (Gnattest_T : in out Test) renames Test_Is_Zero;
---  id:2.1/78dcb388226d19ce/Is_Zero/1/1/
-   --  procedure Test_Is_Zero (Gnattest_T : in out Test) is
---  end read only
---
---        pragma Unreferenced (Gnattest_T);
---
---     begin
---        M.Vote := (others => (others => 0));
---        AUnit.Assertions.Assert
---          (Is_Zero(M), "Is_Zero recognized.");
---
---        M.Vote(1,1) := 1;
---        AUnit.Assertions.Assert
---          (not Is_Zero(M), "not Is_Zero recognized.");
---
---  begin read only
-   --  end Test_Is_Zero;
---  end read only
-
 end Condorcet_Matrix.Test_Data.Tests;
