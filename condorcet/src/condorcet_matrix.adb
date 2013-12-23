@@ -29,19 +29,10 @@ package body Condorcet_Matrix is
         -- only zeros on the diagonal
         (for all I in Candidate_Range'Range => M.Vote(I,I) = 0));
 
-   function Is_Zero(M : Condorcet_Matrix) return Boolean is
+   function Is_Upper_Bound(M : Condorcet_Matrix; Upper : Vote_Range)
+                           return Boolean is
      (for all I in Candidate_Range'Range =>
-        (for all J in Candidate_Range'Range => M.Vote(I,J) = 0));
-
-   function Is_Zero_Or_One(M : Condorcet_Matrix) return Boolean is
-     (for all I in Candidate_Range'Range =>
-        (for all J in Candidate_Range'Range =>
-           (M.Vote(I,J) = 0 or M.Vote(I,J) = 1)));
-
-   function Is_Not_Saturated(M : Condorcet_Matrix) return Boolean is
-      (for all I in Candidate_Range'Range =>
-         (for all J in Candidate_Range'Range =>
-            (M.Vote(I,J) < Vote_Range'Last)));
+        (for all J in Candidate_Range'Range => M.Vote(I,J) <= Upper));
 
    procedure Reset(M : in out Condorcet_Matrix; Size : Candidate_Range) is
    begin
@@ -59,7 +50,8 @@ package body Condorcet_Matrix is
       end loop;
    end Matrix_Of_Vote;
 
-   procedure Sum(To_M : in out Condorcet_Matrix; M2 : in Condorcet_Matrix) is
+   procedure Sum(To_M : in out Condorcet_Matrix; M2 : in Condorcet_Matrix;
+                 Upper : Vote_Range) is
    begin
       for I in Candidate_Range'Range loop
          for J in Candidate_Range'Range loop
