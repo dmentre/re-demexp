@@ -32,11 +32,37 @@ package body Condorcet_Matrix.Test_Data.Tests is
 
 
 --  begin read only
+   procedure Test_Get_Vote (Gnattest_T : in out Test);
+   procedure Test_Get_Vote_6c9fbf (Gnattest_T : in out Test) renames Test_Get_Vote;
+--  id:2.1/6c9fbf708b8bc67f/Get_Vote/1/0/
+   procedure Test_Get_Vote (Gnattest_T : in out Test) is
+   --  condorcet_matrix.ads:12:4:Get_Vote
+--  end read only
+
+      pragma Unreferenced (Gnattest_T);
+
+   begin
+      Reset(M, Size);
+
+      M.Vote := ((0, 1, 2, others => 0),
+                 (0, 0, 1, others => 0),
+                 (0, 0, 0, others => 0),
+                 others => (others => 0));
+      AUnit.Assertions.Assert
+        (Get_Vote(M, 1, 3) = 2,
+         "Get_Vote checked.");
+
+--  begin read only
+   end Test_Get_Vote;
+--  end read only
+
+
+--  begin read only
    procedure Test_Is_Valid_Vote (Gnattest_T : in out Test);
    procedure Test_Is_Valid_Vote_074871 (Gnattest_T : in out Test) renames Test_Is_Valid_Vote;
 --  id:2.1/0748715fd62a6909/Is_Valid_Vote/1/0/
    procedure Test_Is_Valid_Vote (Gnattest_T : in out Test) is
-   --  condorcet_matrix.ads:12:4:Is_Valid_Vote
+   --  condorcet_matrix.ads:15:4:Is_Valid_Vote
 --  end read only
 
       pragma Unreferenced (Gnattest_T);
@@ -62,7 +88,7 @@ package body Condorcet_Matrix.Test_Data.Tests is
    procedure Test_Is_Valid_Matrix_Of_Vote_b229e1 (Gnattest_T : in out Test) renames Test_Is_Valid_Matrix_Of_Vote;
 --  id:2.1/b229e133bdb9d959/Is_Valid_Matrix_Of_Vote/1/0/
    procedure Test_Is_Valid_Matrix_Of_Vote (Gnattest_T : in out Test) is
-   --  condorcet_matrix.ads:27:4:Is_Valid_Matrix_Of_Vote
+   --  condorcet_matrix.ads:30:4:Is_Valid_Matrix_Of_Vote
 --  end read only
 
       pragma Unreferenced (Gnattest_T);
@@ -92,26 +118,31 @@ package body Condorcet_Matrix.Test_Data.Tests is
 
 
 --  begin read only
-   procedure Test_Is_Zero (Gnattest_T : in out Test);
-   procedure Test_Is_Zero_78dcb3 (Gnattest_T : in out Test) renames Test_Is_Zero;
---  id:2.1/78dcb388226d19ce/Is_Zero/1/0/
-   procedure Test_Is_Zero (Gnattest_T : in out Test) is
-   --  condorcet_matrix.ads:31:4:Is_Zero
+   procedure Test_Is_Upper_Bound (Gnattest_T : in out Test);
+   procedure Test_Is_Upper_Bound_f63dcf (Gnattest_T : in out Test) renames Test_Is_Upper_Bound;
+--  id:2.1/f63dcf060227e16f/Is_Upper_Bound/1/0/
+   procedure Test_Is_Upper_Bound (Gnattest_T : in out Test) is
+   --  condorcet_matrix.ads:34:4:Is_Upper_Bound
 --  end read only
 
       pragma Unreferenced (Gnattest_T);
 
    begin
-      M.Vote := (others => (others => 0));
+      Reset(M, Size);
+      M.Vote := ((0, 1, 2, others => 0),
+                 (0, 0, 1, others => 0),
+                 (0, 0, 0, others => 0),
+                 others => (others => 0));
       AUnit.Assertions.Assert
-        (Is_Zero(M), "Is_Zero recognized.");
+        (Is_Upper_Bound(M, 2),
+         "Valid upper bound recognized.");
 
-      M.Vote(1,1) := 1;
       AUnit.Assertions.Assert
-        (not Is_Zero(M), "not Is_Zero recognized.");
+        (not Is_Upper_Bound(M, 1),
+         "Invalid upper bound recognized.");
 
 --  begin read only
-   end Test_Is_Zero;
+   end Test_Is_Upper_Bound;
 --  end read only
 
 
@@ -120,7 +151,7 @@ package body Condorcet_Matrix.Test_Data.Tests is
    procedure Test_Reset_b2e6b9 (Gnattest_T : in out Test) renames Test_Reset;
 --  id:2.1/b2e6b9a9fab2271c/Reset/1/0/
    procedure Test_Reset (Gnattest_T : in out Test) is
-   --  condorcet_matrix.ads:33:4:Reset
+   --  condorcet_matrix.ads:37:4:Reset
 --  end read only
 
       pragma Unreferenced (Gnattest_T);
@@ -144,7 +175,7 @@ package body Condorcet_Matrix.Test_Data.Tests is
    procedure Test_Matrix_Of_Vote_71388c (Gnattest_T : in out Test) renames Test_Matrix_Of_Vote;
 --  id:2.1/71388cee83d5ba48/Matrix_Of_Vote/1/0/
    procedure Test_Matrix_Of_Vote (Gnattest_T : in out Test) is
-   --  condorcet_matrix.ads:36:4:Matrix_Of_Vote
+   --  condorcet_matrix.ads:40:4:Matrix_Of_Vote
 --  end read only
 
       pragma Unreferenced (Gnattest_T);
@@ -168,5 +199,65 @@ package body Condorcet_Matrix.Test_Data.Tests is
    end Test_Matrix_Of_Vote;
 --  end read only
 
+
+--  begin read only
+   procedure Test_Sum (Gnattest_T : in out Test);
+   procedure Test_Sum_5d6e3c (Gnattest_T : in out Test) renames Test_Sum;
+--  id:2.1/5d6e3c511e2544d0/Sum/1/0/
+   procedure Test_Sum (Gnattest_T : in out Test) is
+   --  condorcet_matrix.ads:44:4:Sum
+--  end read only
+
+      pragma Unreferenced (Gnattest_T);
+
+      M2, M3 : Condorcet_Matrix;
+   begin
+      Reset(M, Size);
+      Reset(M2, Size);
+      Reset(M3, Size);
+
+      M.Vote := ((0, 1, 2, others => 0),
+                 (0, 0, 1, others => 0),
+                 (0, 0, 0, others => 0),
+                 others => (others => 0));
+      M2.Vote := ((0, 1, 1, others => 0),
+                  (0, 0, 1, others => 0),
+                  (1, 0, 0, others => 0),
+                  others => (others => 0));
+      M3.Vote := ((0, 2, 3, others => 0),
+                  (0, 0, 2, others => 0),
+                  (1, 0, 0, others => 0),
+                  others => (others => 0));
+      Sum(M, M2, 2);
+      AUnit.Assertions.Assert
+        (M.Vote = M3.Vote,
+         "Sum checked.");
+
+--  begin read only
+   end Test_Sum;
+--  end read only
+
+
+--  begin read only
+   --  procedure Test_Is_Zero (Gnattest_T : in out Test);
+   --  procedure Test_Is_Zero_78dcb3 (Gnattest_T : in out Test) renames Test_Is_Zero;
+--  id:2.1/78dcb388226d19ce/Is_Zero/1/1/
+   --  procedure Test_Is_Zero (Gnattest_T : in out Test) is
+--  end read only
+--
+--        pragma Unreferenced (Gnattest_T);
+--
+--     begin
+--        M.Vote := (others => (others => 0));
+--        AUnit.Assertions.Assert
+--          (Is_Zero(M), "Is_Zero recognized.");
+--
+--        M.Vote(1,1) := 1;
+--        AUnit.Assertions.Assert
+--          (not Is_Zero(M), "not Is_Zero recognized.");
+--
+--  begin read only
+   --  end Test_Is_Zero;
+--  end read only
 
 end Condorcet_Matrix.Test_Data.Tests;
