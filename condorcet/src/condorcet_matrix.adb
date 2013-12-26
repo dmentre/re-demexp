@@ -72,8 +72,10 @@ package body Condorcet_Matrix is
               (for all Jp in J .. Candidate_Range'Last =>
                  (To_M.Vote(I,Jp) <= Upper));
             pragma Assert (To_M.Vote(I,J) <= Upper and M2.Vote(I,J) <= 1);
+
             Tmp := To_M.Vote(I,J) + M2.Vote(I,J);
             To_M.Vote(I,J) := Tmp; -- Tmp only needed for proof (GNATprove GPL 2013)
+
             pragma Assert (Tmp <= Upper + 1);
             pragma Assert (To_M.Vote(I,J) <= Upper + 1);
             pragma Assert
