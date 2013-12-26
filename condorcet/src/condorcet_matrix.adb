@@ -52,11 +52,37 @@ package body Condorcet_Matrix is
 
    procedure Sum(To_M : in out Condorcet_Matrix; M2 : in Condorcet_Matrix;
                  Upper : Vote_Range) is
+      Tmp : Vote_Range;
    begin
       for I in Candidate_Range'Range loop
+         pragma Loop_Invariant
+           (for all Ip in Candidate_Range'First .. I-1 =>
+              (for all Jp in Candidate_Range'Range =>
+                 (To_M.Vote(Ip,Jp) <= Upper + 1)));
+         pragma Loop_Invariant
+           (for all Ip in I .. Candidate_Range'Last =>
+              (for all Jp in Candidate_Range'Range =>
+                 (To_M.Vote(Ip,Jp) <= Upper)));
+
          for J in Candidate_Range'Range loop
-            To_M.Vote(I,J) := To_M.Vote(I,J) + M2.Vote(I,J);
+            pragma Loop_Invariant
+              (for all Jp in Candidate_Range'First .. J-1 =>
+                 (To_M.Vote(I,Jp) <= Upper + 1));
+            pragma Loop_Invariant
+              (for all Jp in J .. Candidate_Range'Last =>
+                 (To_M.Vote(I,Jp) <= Upper));
+            pragma Assert (To_M.Vote(I,J) <= Upper and M2.Vote(I,J) <= 1);
+            Tmp := To_M.Vote(I,J) + M2.Vote(I,J);
+            To_M.Vote(I,J) := Tmp; -- Tmp only needed for proof (GNATprove GPL 2013)
+            pragma Assert (Tmp <= Upper + 1);
+            pragma Assert (To_M.Vote(I,J) <= Upper + 1);
+            pragma Assert
+              (for all Jp in Candidate_Range'First .. J =>
+                 (To_M.Vote(I,Jp) <= Upper + 1));
          end loop;
+         pragma Assert
+           (for all Jp in Candidate_Range'Range =>
+              (To_M.Vote(I,Jp) <= Upper + 1));
       end loop;
    end Sum;
 end Condorcet_Matrix;
