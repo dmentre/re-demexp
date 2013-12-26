@@ -46,6 +46,8 @@ package Condorcet_Matrix is
      Pre =>
        (Get_Size(To_M) = Get_Size(M2)
         and
+          (Upper in Vote_Range'First .. Vote_Range'Last - 1)
+        and
           Is_Upper_Bound(To_M, Upper) and Is_Upper_Bound(M2, 1)),
      Post =>
        ((for all I in Candidate_Range'Range =>
