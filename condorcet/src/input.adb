@@ -48,16 +48,25 @@ package body Input is
 
    function Is_Line_Number_Of_Candidates(Buf : String) return Boolean is
    begin
+      if Buf'First /= 1 or Buf'Last < 20 then
+         return False;
+      end if;
       return "number-of-candidates" = Buf(Buf'First .. Buf'First + 19);
    end;
 
    function Is_Line_Votes(Buf : String) return Boolean is
    begin
+      if Buf'First /= 1 or Buf'Last < 5 then
+         return False;
+      end if;
       return "votes" = Buf(Buf'First .. Buf'First + 4);
    end;
 
    function Is_Line_End(Buf : String) return Boolean is
    begin
+      if Buf'First /= 1 or Buf'Last < 3 then
+         return False;
+      end if;
       return "end" = Buf(Buf'First .. Buf'First + 2);
    end;
 
@@ -87,6 +96,7 @@ package body Input is
          Buf_Index := Buf_Index + 3;
       end loop;
       OK := (Buf_Index - 2 = Last);
+--      Vote := Vote(Candidate_Range'First .. Candidate - 1);
    end Extract_Vote;
 
    function Return_Error(Current_Line : Natural) return Input_T is
