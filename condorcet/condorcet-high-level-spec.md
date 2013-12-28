@@ -14,13 +14,14 @@ format:
 
 > Line 1: "number-of-candidates" string
 
-> Line 2: integer number corresponding to the number of possible candidates
+> Line 2: two-digit integer number corresponding to the number of
+> possible candidates
 
 > Line 3: "votes" string
 
-> Line 4 to n-1: list of at most number-of-candidates integers in the
-> range 1..number-of-candidates. Each integer is separated by a single
-> white space
+> Line 4 to n-1: list of at most number-of-candidates two-digit integers
+> in the range 1..number-of-candidates. Each integer is separated by a
+> single white space
 
 > Line n: "end" string
 

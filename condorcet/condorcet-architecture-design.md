@@ -47,8 +47,8 @@ output.
 
 It provides following functions:
 * Creation of an empty Condorcet matrix;
-* Update of a Condorcet matrix to take into account that candidate A
-  winned over candidate B;
+* Update of a Condorcet matrix to take into account that candidate A won
+  over candidate B;
 * Sum of two Condorcet matrices into one of them;
 * Over a given Condorcet matrix, is candidate A winning over candidate
   B?
