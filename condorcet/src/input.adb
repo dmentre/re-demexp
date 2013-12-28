@@ -26,7 +26,6 @@ package body Input is
 
    procedure Parse_Line(Buf : String; Last : Natural; Current_Line : Natural;
                         OK : out Boolean; Finished : out Boolean) is
-      Vote : Vote_T(Candidate_Range'Range);
    begin
       Finished := False;
       case Current_Line is
@@ -41,7 +40,11 @@ package body Input is
                Finished := True;
                OK := True;
             else
-               Extract_Vote(Buf, Last, Vote, OK);
+               declare
+                  Vote : Vote_T := Extract_Vote(Buf, Last);
+               begin
+                  OK := (Vote'Last >= Vote'First);
+               end;
             end if;
       end case;
    end Parse_Line;
@@ -83,20 +86,27 @@ package body Input is
       end;
    end Extract_Num_Candidates;
 
-   procedure Extract_Vote(Buf : String; Last : Natural;
-                          Vote : out Vote_T; Ok : out Boolean) is
+   function Extract_Vote(Buf : String; Last : Natural) return Vote_T is
+      Vote : Vote_T(Candidate_Range);
       Candidate : Candidate_Range := Candidate_Range'First;
       Buf_Index : Natural;
    begin
       Buf_Index := Buf'First;
       while Buf_Index + 1 <= Last and Candidate <= Candidate_Range'Last loop
-         Vote(Candidate) :=
-           Candidate_Range'Value(Buf(Buf_Index .. Buf_Index + 1));
-         Candidate := Candidate + 1;
-         Buf_Index := Buf_Index + 3;
+         begin
+            Vote(Candidate) :=
+              Candidate_Range'Value(Buf(Buf_Index .. Buf_Index + 1));
+            Candidate := Candidate + 1;
+            Buf_Index := Buf_Index + 3;
+         exception when Constraint_Error =>
+               return Vote(1 .. 0);
+         end;
       end loop;
-      OK := (Buf_Index - 2 = Last);
---      Vote := Vote(Candidate_Range'First .. Candidate - 1);
+      if Buf_Index - 2 = Last then
+         return Vote(Candidate_Range'First .. Candidate - 1);
+      else
+         return Vote(1 .. 0);
+      end if;
    end Extract_Vote;
 
    function Return_Error(Current_Line : Natural) return Input_T is

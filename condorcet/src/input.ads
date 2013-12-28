@@ -38,8 +38,7 @@ private
                                     Num_Candidates : out Candidate_Range;
                                     OK : out Boolean);
 
-   procedure Extract_Vote(Buf : String; Last : Natural;
-                          Vote : out Vote_T; Ok : out Boolean);
+   function Extract_Vote(Buf : String; Last : Natural) return Vote_T;
 
    function Return_Error(Current_Line : Natural) return Input_T;
 end Input;

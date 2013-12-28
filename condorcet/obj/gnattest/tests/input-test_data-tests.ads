@@ -30,11 +30,11 @@ package Input.Test_Data.Tests is
    procedure Test_Extract_Num_Candidates_36a0c1 (Gnattest_T : in out Test);
    --  input.ads:37:4:Extract_Num_Candidates
 
-   procedure Test_Extract_Vote_1af32a (Gnattest_T : in out Test);
+   procedure Test_Extract_Vote_6f17d0 (Gnattest_T : in out Test);
    --  input.ads:41:4:Extract_Vote
 
    procedure Test_Return_Error_ec580f (Gnattest_T : in out Test);
-   --  input.ads:44:4:Return_Error
+   --  input.ads:43:4:Return_Error
 
 end Input.Test_Data.Tests;
 --  end read only

@@ -186,21 +186,47 @@ package body Input.Test_Data.Tests is
 
 --  begin read only
    procedure Test_Extract_Vote (Gnattest_T : in out Test);
-   procedure Test_Extract_Vote_1af32a (Gnattest_T : in out Test) renames Test_Extract_Vote;
---  id:2.1/1af32a5ce6ea1fd6/Extract_Vote/1/0/
+   procedure Test_Extract_Vote_6f17d0 (Gnattest_T : in out Test) renames Test_Extract_Vote;
+--  id:2.1/6f17d0c3c11c490d/Extract_Vote/1/0/
    procedure Test_Extract_Vote (Gnattest_T : in out Test) is
    --  input.ads:41:4:Extract_Vote
 --  end read only
 
       pragma Unreferenced (Gnattest_T);
-      Vote : Vote_T(Candidate_Range'Range);
-      OK : Boolean;
+
    begin
-      Extract_Vote("01 02 03", 8, Vote, OK);
-      AUnit.Assertions.Assert
-        (Vote(1) = 1 and Vote(2) = 2 and Vote(3) = 3
-         and OK = True,
-         "Extract_Vote check (valid).");
+      declare
+         Vote : Vote_T := Extract_Vote("01 02 03", 8);
+      begin
+         AUnit.Assertions.Assert
+           (Vote'First = 1 and Vote'Last = 3
+            and Vote(1) = 1 and Vote(2) = 2 and Vote(3) = 3,
+            "Extract_Vote check (valid).");
+      end;
+
+      declare
+         Vote : Vote_T := Extract_Vote("01 02 03", 7);
+      begin
+         AUnit.Assertions.Assert
+           (Vote'First > Vote'Last,
+            "Extract_Vote check (invalid 1).");
+      end;
+
+      declare
+         Vote : Vote_T := Extract_Vote("01 02 03", 9);
+      begin
+         AUnit.Assertions.Assert
+           (Vote'First > Vote'Last,
+            "Extract_Vote check (invalid 2).");
+      end;
+
+      declare
+         Vote : Vote_T := Extract_Vote("01 02 0A", 8);
+      begin
+         AUnit.Assertions.Assert
+           (Vote'First > Vote'Last,
+            "Extract_Vote check (invalid 3).");
+      end;
 
 --  begin read only
    end Test_Extract_Vote;
@@ -212,7 +238,7 @@ package body Input.Test_Data.Tests is
    procedure Test_Return_Error_ec580f (Gnattest_T : in out Test) renames Test_Return_Error;
 --  id:2.1/ec580f401b794f5f/Return_Error/1/0/
    procedure Test_Return_Error (Gnattest_T : in out Test) is
-   --  input.ads:44:4:Return_Error
+   --  input.ads:43:4:Return_Error
 --  end read only
 
       pragma Unreferenced (Gnattest_T);
