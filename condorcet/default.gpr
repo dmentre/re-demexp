@@ -19,5 +19,7 @@ project Default is
       for Switches use ("-j2");
    end Prove;
 
+   for Main use ("condorcet.adb");
+
 end Default;
 

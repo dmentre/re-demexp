@@ -5,6 +5,8 @@
 condorcet/obj/gnatprove/
 condorcet/obj/*.ali
 condorcet/obj/*.o
+condorcet/obj/b~*
+condorcet/obj/condorcet
 
 # Test harness
 condorcet/obj/gnattest/harness/
