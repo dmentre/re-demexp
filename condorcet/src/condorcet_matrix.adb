@@ -1,12 +1,12 @@
 package body Condorcet_Matrix is
-   function Get_Size(M : Condorcet_Matrix) return Candidate_Range is
+   function Get_Size(M : Matrix_T) return Candidate_Range is
      (M.Size);
 
-   function Get_Vote(M : Condorcet_Matrix; I,J : Candidate_Range)
+   function Get_Vote(M : Matrix_T; I,J : Candidate_Range)
                      return Vote_Range is
       (M.Vote(I,J));
 
-   function Is_Valid_Matrix_Of_Vote(M : Condorcet_Matrix; Vote : Vote_T)
+   function Is_Valid_Matrix_Of_Vote(M : Matrix_T; Vote : Vote_T)
                                  return Boolean is
      (-- all votes of 'Vote' a properly stored
         (for all I in Vote'Range =>
@@ -29,18 +29,18 @@ package body Condorcet_Matrix is
         -- only zeros on the diagonal
         (for all I in Candidate_Range'Range => M.Vote(I,I) = 0));
 
-   function Is_Upper_Bound(M : Condorcet_Matrix; Upper : Vote_Range)
+   function Is_Upper_Bound(M : Matrix_T; Upper : Vote_Range)
                            return Boolean is
      (for all I in Candidate_Range'Range =>
         (for all J in Candidate_Range'Range => M.Vote(I,J) <= Upper));
 
-   procedure Reset(M : in out Condorcet_Matrix; Size : Candidate_Range) is
+   procedure Reset(M : in out Matrix_T; Size : Candidate_Range) is
    begin
       M.Size := Size;
       M.Vote := (others => (others => 0));
    end Reset;
 
-   procedure Matrix_Of_Vote(M : in out Condorcet_Matrix; Vote : Vote_T) is
+   procedure Matrix_Of_Vote(M : in out Matrix_T; Vote : Vote_T) is
    begin
       for I in Vote'Range loop
          for J in I+1 .. Vote'Last loop
@@ -50,7 +50,7 @@ package body Condorcet_Matrix is
       end loop;
    end Matrix_Of_Vote;
 
-   procedure Sum(To_M : in out Condorcet_Matrix; M2 : in Condorcet_Matrix;
+   procedure Sum(To_M : in out Matrix_T; M2 : in Matrix_T;
                  Upper : Vote_Range) is
       Tmp : Vote_Range;
    begin

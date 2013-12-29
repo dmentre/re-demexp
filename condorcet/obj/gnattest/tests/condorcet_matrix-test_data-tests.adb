@@ -12,8 +12,8 @@ package body Condorcet_Matrix.Test_Data.Tests is
 
 --  begin read only
    procedure Test_Get_Size (Gnattest_T : in out Test);
-   procedure Test_Get_Size_eeb750 (Gnattest_T : in out Test) renames Test_Get_Size;
---  id:2.1/eeb7509557d4a2f0/Get_Size/1/0/
+   procedure Test_Get_Size_f56751 (Gnattest_T : in out Test) renames Test_Get_Size;
+--  id:2.1/f567513e7b582cdd/Get_Size/1/0/
    procedure Test_Get_Size (Gnattest_T : in out Test) is
    --  condorcet_matrix.ads:10:4:Get_Size
 --  end read only
@@ -33,8 +33,8 @@ package body Condorcet_Matrix.Test_Data.Tests is
 
 --  begin read only
    procedure Test_Get_Vote (Gnattest_T : in out Test);
-   procedure Test_Get_Vote_6c9fbf (Gnattest_T : in out Test) renames Test_Get_Vote;
---  id:2.1/6c9fbf708b8bc67f/Get_Vote/1/0/
+   procedure Test_Get_Vote_ff6ec0 (Gnattest_T : in out Test) renames Test_Get_Vote;
+--  id:2.1/ff6ec0d0eb393849/Get_Vote/1/0/
    procedure Test_Get_Vote (Gnattest_T : in out Test) is
    --  condorcet_matrix.ads:12:4:Get_Vote
 --  end read only
@@ -85,8 +85,8 @@ package body Condorcet_Matrix.Test_Data.Tests is
 
 --  begin read only
    procedure Test_Is_Valid_Matrix_Of_Vote (Gnattest_T : in out Test);
-   procedure Test_Is_Valid_Matrix_Of_Vote_b229e1 (Gnattest_T : in out Test) renames Test_Is_Valid_Matrix_Of_Vote;
---  id:2.1/b229e133bdb9d959/Is_Valid_Matrix_Of_Vote/1/0/
+   procedure Test_Is_Valid_Matrix_Of_Vote_3281d7 (Gnattest_T : in out Test) renames Test_Is_Valid_Matrix_Of_Vote;
+--  id:2.1/3281d7a2aa507f2f/Is_Valid_Matrix_Of_Vote/1/0/
    procedure Test_Is_Valid_Matrix_Of_Vote (Gnattest_T : in out Test) is
    --  condorcet_matrix.ads:30:4:Is_Valid_Matrix_Of_Vote
 --  end read only
@@ -119,8 +119,8 @@ package body Condorcet_Matrix.Test_Data.Tests is
 
 --  begin read only
    procedure Test_Is_Upper_Bound (Gnattest_T : in out Test);
-   procedure Test_Is_Upper_Bound_f63dcf (Gnattest_T : in out Test) renames Test_Is_Upper_Bound;
---  id:2.1/f63dcf060227e16f/Is_Upper_Bound/1/0/
+   procedure Test_Is_Upper_Bound_933a96 (Gnattest_T : in out Test) renames Test_Is_Upper_Bound;
+--  id:2.1/933a96a820586559/Is_Upper_Bound/1/0/
    procedure Test_Is_Upper_Bound (Gnattest_T : in out Test) is
    --  condorcet_matrix.ads:34:4:Is_Upper_Bound
 --  end read only
@@ -148,8 +148,8 @@ package body Condorcet_Matrix.Test_Data.Tests is
 
 --  begin read only
    procedure Test_Reset (Gnattest_T : in out Test);
-   procedure Test_Reset_b2e6b9 (Gnattest_T : in out Test) renames Test_Reset;
---  id:2.1/b2e6b9a9fab2271c/Reset/1/0/
+   procedure Test_Reset_604c35 (Gnattest_T : in out Test) renames Test_Reset;
+--  id:2.1/604c350e403979d8/Reset/1/0/
    procedure Test_Reset (Gnattest_T : in out Test) is
    --  condorcet_matrix.ads:37:4:Reset
 --  end read only
@@ -172,15 +172,15 @@ package body Condorcet_Matrix.Test_Data.Tests is
 
 --  begin read only
    procedure Test_Matrix_Of_Vote (Gnattest_T : in out Test);
-   procedure Test_Matrix_Of_Vote_71388c (Gnattest_T : in out Test) renames Test_Matrix_Of_Vote;
---  id:2.1/71388cee83d5ba48/Matrix_Of_Vote/1/0/
+   procedure Test_Matrix_Of_Vote_e1de69 (Gnattest_T : in out Test) renames Test_Matrix_Of_Vote;
+--  id:2.1/e1de6935221bad44/Matrix_Of_Vote/1/0/
    procedure Test_Matrix_Of_Vote (Gnattest_T : in out Test) is
    --  condorcet_matrix.ads:40:4:Matrix_Of_Vote
 --  end read only
 
       pragma Unreferenced (Gnattest_T);
 
-      M2 : Condorcet_Matrix;
+      M2 : Matrix_T;
    begin
       Reset(M, Size);
       Reset(M2, Size);
@@ -202,15 +202,15 @@ package body Condorcet_Matrix.Test_Data.Tests is
 
 --  begin read only
    procedure Test_Sum (Gnattest_T : in out Test);
-   procedure Test_Sum_5d6e3c (Gnattest_T : in out Test) renames Test_Sum;
---  id:2.1/5d6e3c511e2544d0/Sum/1/0/
+   procedure Test_Sum_4f55e5 (Gnattest_T : in out Test) renames Test_Sum;
+--  id:2.1/4f55e5ec421d67ea/Sum/1/0/
    procedure Test_Sum (Gnattest_T : in out Test) is
    --  condorcet_matrix.ads:44:4:Sum
 --  end read only
 
       pragma Unreferenced (Gnattest_T);
 
-      M2, M3 : Condorcet_Matrix;
+      M2, M3 : Matrix_T;
    begin
       Reset(M, Size);
       Reset(M2, Size);

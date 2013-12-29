@@ -5,11 +5,11 @@ package Condorcet_Matrix is
 
    type Vote_T is array (Candidate_Range range <>) of Candidate_Range;
 
-   type Condorcet_Matrix is private;
+   type Matrix_T is private;
 
-   function Get_Size(M : Condorcet_Matrix) return Candidate_Range;
+   function Get_Size(M : Matrix_T) return Candidate_Range;
 
-   function Get_Vote(M : Condorcet_Matrix; I,J : Candidate_Range)
+   function Get_Vote(M : Matrix_T; I,J : Candidate_Range)
                      return Vote_Range;
 
    function Is_Valid_Vote(Vote : Vote_T; Size : Candidate_Range) return Boolean is
@@ -27,21 +27,21 @@ package Condorcet_Matrix is
            (Vote(I) in Vote'Range))
      );
 
-   function Is_Valid_Matrix_Of_Vote(M : Condorcet_Matrix; Vote : Vote_T)
+   function Is_Valid_Matrix_Of_Vote(M : Matrix_T; Vote : Vote_T)
                                  return Boolean with
      Pre => Is_Valid_Vote(Vote, Get_Size(M));
 
-   function Is_Upper_Bound(M : Condorcet_Matrix; Upper : Vote_Range)
+   function Is_Upper_Bound(M : Matrix_T; Upper : Vote_Range)
                            return Boolean;
 
-   procedure Reset(M : in out Condorcet_Matrix; Size : Candidate_Range) with
+   procedure Reset(M : in out Matrix_T; Size : Candidate_Range) with
      Post => Is_Upper_Bound(M, 0) and Get_Size(M) = Size;
 
-   procedure Matrix_Of_Vote(M : in out Condorcet_Matrix; Vote : Vote_T) with
+   procedure Matrix_Of_Vote(M : in out Matrix_T; Vote : Vote_T) with
      Pre => Is_Upper_Bound(M, 0) and Is_Valid_Vote(Vote, Get_Size(M)),
      Post => Is_Valid_Matrix_Of_Vote(M, Vote);
 
-   procedure Sum(To_M : in out Condorcet_Matrix; M2 : in Condorcet_Matrix;
+   procedure Sum(To_M : in out Matrix_T; M2 : in Matrix_T;
                  Upper : Vote_Range) with
      Pre =>
        (Get_Size(To_M) = Get_Size(M2)
@@ -61,7 +61,7 @@ private
    type Matrix_Content is
      array (Candidate_Range, Candidate_Range) of Vote_Range;
 
-   type Condorcet_Matrix is
+   type Matrix_T is
       record
          Size : Candidate_Range;
          Vote : Matrix_Content;
