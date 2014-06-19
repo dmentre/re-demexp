@@ -7,6 +7,8 @@ condorcet/obj/*.ali
 condorcet/obj/*.o
 condorcet/obj/b~*
 condorcet/obj/condorcet
+condorcet/obj/gnatinspect.db*
+condorcet/obj/default-loc.xml
 
 # Test harness
 condorcet/obj/gnattest/harness/
