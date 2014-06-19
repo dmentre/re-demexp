@@ -1,7 +1,9 @@
 with Input; use Input;
 with Ada.Text_IO; use Ada.Text_IO;
 
-procedure Condorcet is
+procedure Condorcet
+  with SPARK_Mode => Off
+is
    Read_Input : Input_T;
 begin
    Read_Input := Input.Read;

@@ -3,6 +3,14 @@ project Default is
    for Source_Dirs use ("src");
    for Object_Dir use "obj";
 
+   package Prove is
+      for Switches use ("-j2", "--warnings=continue");
+   end Prove;
+
+   package Builder is
+      for Global_Configuration_Pragmas use "global_pragma.adc";
+   end Builder;
+
    package Compiler is
       for Default_Switches ("ada") use ("-g", "-O2", "-gnat12", "-gnato", "-gnatE", "-gnata", "-gnatf");
    end Compiler;
@@ -14,10 +22,6 @@ project Default is
    package Linker is
       for Default_Switches ("ada") use ("-g");
    end Linker;
-
-   package Prove is
-      for Switches use ("-j2");
-   end Prove;
 
    for Main use ("condorcet.adb");
 

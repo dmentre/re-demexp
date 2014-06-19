@@ -1,5 +1,7 @@
 package body Input is
-   function Read return Input_T is
+   function Read return Input_T
+     with SPARK_Mode => Off -- FIXME: function should not write (indirectly) global variables
+   is
       Buf : String(1..Input_Buffer_Size);
       Last : Natural;
       Input : Input_T;
@@ -31,8 +33,10 @@ package body Input is
       case Current_Line is
          when 1 =>
             OK := Is_Line_Number_Of_Candidates(Buf);
-         when 2 =>
+        when 2 =>
             Extract_Num_Candidates(Buf, Last, Num_Candidates, OK);
+--            if OK then
+
          when 3 =>
             OK := Is_Line_Votes(Buf);
          when others =>
@@ -75,7 +79,9 @@ package body Input is
 
    procedure Extract_Num_Candidates(Buf : String; Last : Natural;
                                     Num_Candidates : out Candidate_Range;
-                                    OK : out Boolean) is
+                                    OK : out Boolean)
+     with SPARK_Mode => Off
+   is
    begin
       begin
          Num_Candidates := Candidate_Range'Value(Buf(Buf'First..Last));
@@ -86,7 +92,9 @@ package body Input is
       end;
    end Extract_Num_Candidates;
 
-   function Extract_Vote(Buf : String; Last : Natural) return Vote_T is
+   function Extract_Vote(Buf : String; Last : Natural) return Vote_T
+     with SPARK_Mode => Off
+   is
       Vote : Vote_T(Candidate_Range);
       Candidate : Candidate_Range := Candidate_Range'First;
       Buf_Index : Natural;

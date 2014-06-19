@@ -20,6 +20,7 @@ package Input is
 
 private
    Num_Candidates : Candidate_Range;
+--   Matrix : Matrix_T;
 
    procedure Buffer_From_Stdin(Buf : out String; Last : out Natural;
                                Current_Line : in out Natural);
